@@ -1,87 +1,142 @@
-# SPAM Detector ML
+#  Fraud Detection Dashboard
 
-A fraud detection application with both web frontend and Python machine learning backend for analyzing and predicting fraudulent transactions.
+An interactive web application designed to detect fraudulent credit card transactions. Users can upload a CSV file of transaction data, and the application leverages a pre-trained machine learning model to provide real-time predictions and insightful visualizations.
 
-## Features
+This project features a modern architecture with a standalone Python (Flask) backend API and a dynamic VITE + JavaScript frontend.
 
-- **Real-time Fraud Detection**: Upload CSV files and get instant fraud predictions
-- **Interactive Dashboard**: Modern web interface with dark/light mode
-- **Machine Learning Backend**: Python-based Dash application with trained models
-- **Data Visualization**: Charts and analytics for prediction results
-- **Risk Assessment**: Color-coded risk levels for transaction analysis
+---
 
-## Live Demo
+##  Screenshot
 
-Frontend: [Deployed on Netlify](https://fraud-detector-dashboard.netlify.app/)
+<img width="1699" height="869" alt="image" src="https://github.com/user-attachments/assets/a180b304-561b-4363-bdb1-7e54db27b54d" />
+<img width="1606" height="882" alt="image" src="https://github.com/user-attachments/assets/a718f1dc-4c2d-4a61-8064-906c24f16ebe" />
+<img width="821" height="543" alt="image" src="https://github.com/user-attachments/assets/d0d02631-4625-43ab-aeaf-6639f5eb1e9a" />
+<img width="1569" height="891" alt="image" src="https://github.com/user-attachments/assets/57b1dd10-8fbb-4c68-bd02-75f465b981ba" />
+<img width="1493" height="435" alt="image" src="https://github.com/user-attachments/assets/88650736-d06a-445d-bce7-1d9007b28a8d" />
 
-## Technology Stack
 
-**Frontend:**
-- Vite + JavaScript
-- Tailwind CSS
-- Chart.js
 
-**Backend:**
-- Python + Dash
-- Scikit-learn
-- Pandas, NumPy
-- Plotly
 
-## Quick Start
 
-### Frontend Development
 
-```bash
-npm install
-npm run dev
-```
+---
 
-### Python Backend
+##  Features
 
-```bash
-cd python-backend
-pip install dash scikit-learn pandas numpy plotly
-python app.py
-```
+* **Real-time Fraud Prediction:** Upload a CSV file and get instant predictions for each transaction.
+* **Interactive Dashboard:** All statistics and charts update dynamically without a page refresh.
+* **Key Performance Indicators (KPIs):** At-a-glance metrics including:
+    * Total Transactions Analyzed
+    * Potential Fraud Loss Prevented
+    * Counts of Fraudulent & Legitimate Transactions
+    * Overall Fraud Rate
+* **Data Visualization:**
+    * **Prediction Distribution:** A pie chart showing the proportion of fraudulent vs. legitimate transactions.
+    * **Confidence Distribution:** A bar chart grouping transactions by the model's confidence score.
+    * **Fraud Rate Trend:** A line chart that displays the fraud rate over time (if a 'Time' column is present).
+* **Detailed Analysis:**
+    * A full, searchable table of all transactions with their predictions.
+    * A summary table highlighting the **Top 5 High-Risk Transactions**.
+* **Downloadable Reports:** Export the complete results, including predictions and confidence scores, as a new CSV file.
+* **Responsive Design:** A clean, modern UI that works on various screen sizes.
+* **Dark / Light Mode:** A theme toggle for user comfort.
 
-## Deployment
+---
 
-### Frontend (Netlify)
+##  Tech Stack
 
-The frontend is configured for automatic deployment to Netlify:
+* **Backend:**
+    * **Python 3**
+    * **Flask:** For the web server and API endpoint.
+    * **Pandas:** For efficient data manipulation.
+    * **Scikit-learn:** For loading and using the pre-trained machine learning model.
+* **Frontend:**
+    * **HTML5**
+    * **CSS3:** Custom properties for easy theming (no frameworks).
+    * **Vite :** Modular, class-based structure for managing the UI, charts, and API calls.
+* **Charting:**
+    * **Chart.js:** For creating dynamic and responsive charts.
 
-- Build command: `npm install --legacy-peer-deps && npm run build`
-- Publish directory: `dist`
-- Node version: 18
+---
 
-### Backend Deployment
+##  Getting Started
 
-The Python backend can be deployed to platforms like:
-- PythonAnywhere
-- Heroku
-- Railway
-- DigitalOcean
+Follow these instructions to get a copy of the project up and running on your local machine.
+
+### Prerequisites
+
+You need to have the following software installed:
+* [Python 3.8+](https://www.python.org/downloads/) and `pip`
+* [Node.js and npm](https://nodejs.org/en/download/)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
+    cd YOUR_REPOSITORY_NAME
+    ```
+
+2.  **Set up the Python Backend:**
+    * Navigate to the backend directory:
+        ```sh
+        cd python-backend
+        ```
+    * Create and activate a virtual environment (recommended):
+        ```sh
+        # For Mac/Linux
+        python3 -m venv venv
+        source venv/bin/activate
+
+        # For Windows
+        python -m venv venv
+        .\venv\Scripts\activate
+        ```
+    * Install the required Python packages:
+        ```sh
+        pip install -r requirements.txt
+        ```
+        *(If you don't have a `requirements.txt` file, create one with `Flask`, `Flask-Cors`, `pandas`, `scikit-learn`, and `joblib`)*
+
+3.  **Set up the JavaScript Frontend:**
+    * Navigate back to the root project directory:
+        ```sh
+        cd ..
+        ```
+    * Install the npm packages (this will install development tools like Vite):
+        ```sh
+        npm install
+        ```
+
+### Running the Application
+
+You need to run both the backend and frontend servers simultaneously in two separate terminals.
+
+1.  **Start the Backend Server:**
+    * In your first terminal, from the `python-backend` directory:
+        ```sh
+        python app.py
+        ```
+    * The backend will be running at `http://127.0.0.1:5000`.
+
+2.  **Start the Frontend Server:**
+    * In your second terminal, from the **root project directory**:
+        ```sh
+        npm run dev
+        ```
+    * The frontend development server will start, typically at `http://localhost:5173` (Vite's default).
+
+---
 
 ## Usage
 
-1. **Upload CSV**: Drag and drop transaction data
-2. **View Results**: Analyze predictions with confidence scores
-3. **Interpret Charts**: Review distribution and correlation visualizations
-4. **Risk Assessment**: Examine color-coded transaction risk levels
+1.  Open the frontend URL provided by the `npm run dev` command in your browser.
+2.  Drag and drop a CSV file with transaction data onto the upload area, or click to select a file.
+3.  The dashboard will automatically update with predictions and visualizations based on your data.
+4.  Interact with the charts, review the transaction tables, and click the "Download Predictions" button to get your results.
 
-## Project Structure
+---
 
-```
-├── src/                 # Frontend source code
-├── python-backend/      # Python ML backend
-│   ├── app.py          # Dash application
-│   ├── main.py         # Additional scripts
-│   ├── requirements.txt # Python dependencies
-│   └── static/         # ML model files
-├── dist/               # Built frontend files
-└── netlify.toml        # Netlify configuration
-```
+##  License
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
