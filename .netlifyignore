@@ -1,0 +1,12 @@
+# Python backend (this is a frontend-only deployment)
+python-backend/
+
+# Large data files
+*.csv
+
+# IDE files
+.idea/
+.vscode/
+
+# macOS
+.DS_Store 
